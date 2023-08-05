@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobilemsk/Screens/Auth/change_password.dart';
 
-import '../consts/text_styles.dart';
+
+import '../../consts/text_styles.dart';
 
 class ProvideOTPScreen extends StatefulWidget {
   const ProvideOTPScreen({Key? key}) : super(key: key);
@@ -36,7 +38,7 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                   children: [
                     SizedBox(//for logo
                       height: size*0.20,
-                      child: Image.asset('images/msklogo.png'),
+                      child: Image.asset('assets/images/msklogo.png'),
                     ),
                     SizedBox(height: size*0.1),
                     const Text( //for welcome text
@@ -78,7 +80,9 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                           ),
                         ),
                       ),
-                      onPressed: () {  },
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (builder)=>const ChangePassword()));
+                      },
                     ),
                     SizedBox(height: size*0.025),
                     TextButton(

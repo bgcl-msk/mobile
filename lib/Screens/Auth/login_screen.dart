@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../consts/text_styles.dart';
+import '../../consts/text_styles.dart';
 import 'forget_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 SizedBox(//for logo
                   height: size*0.20,
-                  child: Image.asset('images/msklogo.png'),
+                  child: Image.asset('assets/images/msklogo.png')
                 ),
                 SizedBox(height: size*0.1),
                 const Text( //for welcome text
@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),),
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context)=> ForgetPasswordScreen()));
+                            builder: (context)=> const ForgotPassword()));
                       },
                     )
                   ],
@@ -116,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: double.infinity,
                     height: 50,
                     decoration: BoxDecoration(
-                        color: Color(0xff1D4771),
+                        color: const Color(0xff1D4771),
                         borderRadius: BorderRadius.circular(10)
                     ),
                     child: Center(
