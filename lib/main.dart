@@ -1,8 +1,17 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:mobilemsk/Screens/splash_screen.dart';
+import 'Screens/splash_screen.dart';
+
 
 void main() {
-  runApp(const MyStoreKeeper());
+  runApp(
+      // DevicePreview(builder: (context)=> const MyStoreKeeper(),
+      //     enabled: true,
+      // )
+    const MyStoreKeeper()
+  );
+
+
 }
 
 class MyStoreKeeper extends StatelessWidget {
@@ -10,7 +19,10 @@ class MyStoreKeeper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const MaterialApp( debugShowCheckedModeBanner: false,
+      // useInheritedMediaQuery: true,
+      // locale: DevicePreview.locale(context),
+      // builder: DevicePreview.appBuilder,
       home: SplashScreen(),
     );
   }

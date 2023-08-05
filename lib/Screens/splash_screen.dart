@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 4), () {
       Navigator.push(
           context, MaterialPageRoute(
           builder: (context)=>const LoginScreen()));
@@ -25,10 +23,20 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double size = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        child: Center(child: Text('dsfs')),
-      ),
+      body: Center(
+          child: Container(
+            height: size*0.4, width: size*0.4,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                image: DecorationImage(
+                  image: AssetImage('images/mskgif.gif'),
+                  fit: BoxFit.fill,
+                  repeat: ImageRepeat.noRepeat,
+                ),
+              ),
+          )),
     );
   }
 }
