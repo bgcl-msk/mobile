@@ -76,7 +76,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               height: 76,
                               width: 76,
                             ),
-                            const SizedBox(height: 7),
+                            SizedBox(height: size*0.025),
                             const Text(
                               'Change Password',
                               style: TextStyle(
@@ -85,6 +85,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 fontFamily: 'Montserrat-Regular',
                               ),
                             ),
+                            SizedBox(height: size*0.025),
                             MyTextField(
                               controller: _emailController,
                               hintext: 'Email/Contact',
@@ -97,6 +98,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
+                            SizedBox(height: size*0.025),
                             MyTextField(
                               controller: _newPassword,
                               hintext: 'New Password',
@@ -109,6 +111,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
+                            SizedBox(height: size*0.025),
                             MyTextField(
                               controller: _confirmPassword,
                               hintext: 'Confirm Password',
@@ -123,6 +126,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
+                            SizedBox(height: size*0.025),
                             MyTextField(
                               controller: _otpCode,
                               hintext: 'OTP code',
@@ -135,6 +139,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
+                            SizedBox(height: size*0.025),
                             PrimaryButton(
                               buttonName: 'Submit',
                               onPress: () {
