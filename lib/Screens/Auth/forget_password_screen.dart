@@ -4,7 +4,6 @@ import 'package:mobilemsk/Screens/Auth/provide_otp_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../dark theme/theme_model.dart';
-import '../../widgets/Text Field Widgets/textfields.dart';
 import '../../widgets/button widgets/primary_button.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -20,6 +19,8 @@ class ForgotPassword extends StatefulWidget {
 final _formKey = GlobalKey<FormState>();
 final _emailController = TextEditingController();
 
+final FocusNode _focusNode1 = FocusNode();
+
 class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         return Scaffold(
           body: SafeArea(
             child: Padding(
-              padding: EdgeInsets.all(size*0.1),
+              padding: EdgeInsets.all(size * 0.1),
               child: Center(
                 child: SingleChildScrollView(
                   child: Form(
@@ -37,34 +38,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        //----------------------------------------------
-                        // A button for the dark theme
-                        //----------------------------------------------
-                        Column(
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: Padding(
-                                padding:
-                                const EdgeInsets.only(left: 10, top: 100),
-                                child: IconButton(
-                                  onPressed: () {
-                                    themeNotifier.isDark
-                                        ? themeNotifier.isDark = false
-                                        : themeNotifier.isDark = true;
-                                  },
-                                  icon: Icon(
-                                    themeNotifier.isDark
-                                        ? Icons.nightlight_round
-                                        : Icons.wb_sunny,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-
                         //----------------------------------------------
                         // Forgot password details
                         //----------------------------------------------
@@ -74,40 +47,45 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             // Logo
                             //----------------------------------------------
 
-                            Image.asset(
-                              'assets/images/msklogo.png',
-                              height: size*0.2,
-                              //width: 76,
-                            ),
-                            const SizedBox(height: 5),
-                            const Text(
-                              'Forgot Password',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Montserrate',
-                              ),
-                            ),
+                            SizedBox(
+                                //for logo
+                                height: size * 0.20,
+                                child:
+                                    Image.asset('assets/images/msklogo.png')),
+                            SizedBox(height: size * 0.1),
+
+                            const Text('Forgot Password',
+                                style: TextStyle(
+                                    fontFamily: 'Montserrate',
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w500)),
+                            SizedBox(height: size * 0.1),
                             //----------------------------------------------
                             // Email TextField
                             //----------------------------------------------
-
-                            MyTextField(
-                              controller: _emailController,
-                              hintext: 'Email/Contact',
-                              keyboardType: TextInputType.emailAddress,
-                              validator: (value) {
-                                if (value == null || value.isEmpty || !value.contains('@')) {
-                                  return 'Please enter your email/contact';
-                                }
-
-                                return null;
-                              },
+                            ClipRRect(
+                              //email field
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: TextField(
+                                focusNode: _focusNode1,
+                                cursorColor: Colors.black,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: InputDecoration(
+                                  hintText: 'Email/Contact',
+                                  border: InputBorder.none,
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xff1D4771)),
+                                  ),
+                                  filled: true,
+                                ),
+                              ),
                             ),
                             //----------------------------------------------
                             // Button
                             //----------------------------------------------
-
+                            SizedBox(height: size * 0.05),
                             PrimaryButton(
                               buttonName: 'Submit',
                               onPress: () {
@@ -123,7 +101,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         //----------------------------------------------
                         // Back button
                         //----------------------------------------------
-
                         Align(
                           alignment: Alignment
                               .bottomLeft, // Align the FAB to the left side

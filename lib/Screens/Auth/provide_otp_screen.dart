@@ -65,7 +65,7 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: size*0.1),
+                    SizedBox(height: size*0.05),
                     TextButton( //login button
                       child: Container(
                         width: double.infinity,
@@ -75,7 +75,7 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                             borderRadius: BorderRadius.circular(10)
                         ),
                         child: Center(
-                          child: Text('VERIFY',
+                          child: Text('Verify',
                               style: TextStyles().kbuttonStyle
                           ),
                         ),
@@ -88,9 +88,9 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                     TextButton(
                       child: const Text('Didn\'t receive any code ?',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.blueGrey,
                         fontSize: 13,
-                        fontWeight: FontWeight.w700
+                        fontWeight: FontWeight.w500
                       ),
                       ),
                       onPressed: () {  },

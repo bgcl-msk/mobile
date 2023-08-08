@@ -39,66 +39,45 @@ class _ChangePasswordState extends State<ChangePassword> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        //----------------------------------------------
-                        // A button for the dark theme
-                        //----------------------------------------------
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Align(
-                                alignment: Alignment.topRight,
-                                child: IconButton(
-                                  onPressed: () {
-                                    themeNotifier.isDark
-                                        ? themeNotifier.isDark = false
-                                        : themeNotifier.isDark = true;
-                                  },
-                                  icon: Icon(
-                                    themeNotifier.isDark
-                                        ? Icons.nightlight_round
-                                        : Icons.wb_sunny,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                        
 
                         //----------------------------------------------
                         // Forgot password details
                         //----------------------------------------------
                         Column(
                           children: [
-                            Image.asset(
-                              'assets/images/msklogo.png',
-                              height: 76,
-                              width: 76,
-                            ),
-                            SizedBox(height: size*0.025),
+                            SizedBox(//for logo
+                  height: size*0.20,
+                  child: Image.asset('assets/images/msklogo.png')
+                ),
+                            // Image.asset(
+                            //   'assets/images/msklogo.png',
+                            //   height: 76,
+                            //   width: 76,
+                            // ),
+                            SizedBox(height: size*0.1),
                             const Text(
                               'Change Password',
                               style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Montserrat-Regular',
-                              ),
+                      fontFamily: 'Montserrate',
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500
+                  )
                             ),
-                            SizedBox(height: size*0.025),
+                            SizedBox(height: size*0.1),
                             MyTextField(
                               controller: _emailController,
                               hintext: 'Email/Contact',
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
-                                if (value == null || value.isEmpty || !value.contains('@')) {
+                                if (value == null || value.isEmpty) {
                                   return 'Please enter your email/contact';
                                 }
 
                                 return null;
                               },
                             ),
-                            SizedBox(height: size*0.025),
+                            SizedBox(height: size*0.05),
                             MyTextField(
                               controller: _newPassword,
                               hintext: 'New Password',
@@ -111,7 +90,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
-                            SizedBox(height: size*0.025),
+                            SizedBox(height: size*0.05),
                             MyTextField(
                               controller: _confirmPassword,
                               hintext: 'Confirm Password',
@@ -126,7 +105,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
-                            SizedBox(height: size*0.025),
+                            SizedBox(height: size*0.05),
                             MyTextField(
                               controller: _otpCode,
                               hintext: 'OTP code',
@@ -139,7 +118,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
-                            SizedBox(height: size*0.025),
+                            SizedBox(height: size*0.05),
                             PrimaryButton(
                               buttonName: 'Submit',
                               onPress: () {
@@ -156,6 +135,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                         // Back button
                         //----------------------------------------------
 
+                        SizedBox(height: size*0.1),
                         Align(
                           alignment: Alignment
                               .bottomLeft, // Align the FAB to the left side

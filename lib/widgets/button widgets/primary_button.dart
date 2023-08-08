@@ -17,12 +17,6 @@ class PrimaryButton extends StatelessWidget {
         return GestureDetector(
           onTap: onPress,
           child: Container(
-            margin: EdgeInsets.symmetric(
-                horizontal: deviceSize.width * 0.03,
-                vertical: deviceSize.height * 0.03),
-            padding: EdgeInsets.symmetric(
-                horizontal: deviceSize.width * 0.01,
-                vertical: deviceSize.height * 0.01),
             height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
@@ -38,7 +32,8 @@ class PrimaryButton extends StatelessWidget {
 
   TextStyle textStyle(ThemeModel themeNotifier) {
     return const TextStyle(
-      fontSize: 24,
+      fontSize: 20,
+      letterSpacing: 2,
       fontFamily: 'Montserrat-Regular',
       color:  Colors.white,
     );
