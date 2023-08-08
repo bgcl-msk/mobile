@@ -8,10 +8,10 @@ import 'dark theme/theme_model.dart';
 
 void main() {
   runApp(
-      // DevicePreview(builder: (context)=> const MyStoreKeeper(),
-      //     enabled: true,
-      // )
-    const MyStoreKeeper()
+      DevicePreview(builder: (context)=> const MyStoreKeeper(),
+          enabled: true,
+      )
+    //const MyStoreKeeper()
   );
 
 
@@ -28,9 +28,9 @@ class MyStoreKeeper extends StatelessWidget {
         builder: (context, ThemeModel themeNotifier, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            // useInheritedMediaQuery: true,
-            // locale: DevicePreview.locale(context),
-            // builder: DevicePreview.appBuilder,
+            useInheritedMediaQuery: true,
+            locale: DevicePreview.locale(context),
+            builder: DevicePreview.appBuilder,
             theme: themeNotifier.isDark ? ThemeData.dark() : ThemeData.light(),
             home: const SplashScreen(),
           );

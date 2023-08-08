@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Timer(const Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.push(
           context, MaterialPageRoute(
           builder: (context)=>const LoginScreen()));
@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: Colors.white,
                 image: DecorationImage(
                   image: AssetImage('assets/images/mskgif.gif'),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                   repeat: ImageRepeat.noRepeat,
                 ),
               ),

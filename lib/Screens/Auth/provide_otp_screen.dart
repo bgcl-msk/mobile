@@ -22,7 +22,7 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
       floatingActionButton: Padding(
         padding: EdgeInsets.only(left: size*0.06, bottom: size*0.05),
         child: FloatingActionButton(
-          backgroundColor: Color(0xff1D4771),
+          backgroundColor: const Color(0xff1D4771),
           child: const Icon(Icons.arrow_back_ios_new),
           onPressed: () {
             Navigator.pop(context);
@@ -71,7 +71,7 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                         width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
-                            color: Color(0xff1D4771),
+                            color: const Color(0xff1D4771),
                             borderRadius: BorderRadius.circular(10)
                         ),
                         child: Center(
