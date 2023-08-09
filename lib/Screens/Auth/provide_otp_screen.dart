@@ -71,6 +71,52 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                   SizedBox(height: size * 0.05),
                   TextButton(
                     //login button
+                    onPressed: () { 
+                      Navigator.push(context, MaterialPageRoute(builder: (builder)=>const ChangePassword()));
+                     },
+                    child: Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: Color(0xff1D4771),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Text('Verify', style: TextStyles().kbuttonStyle),
+                      ),
+                      // onPressed: () {
+                      //   Navigator.push(context, MaterialPageRoute(builder: (builder)=>const ChangePassword()));
+                      // },
+                  )),
+                    SizedBox(height: size*0.025),
+                    TextButton(
+                      onPressed: () {  },
+                      child: const Text('Didn\'t receive any code ?',
+                      style: TextStyle(
+                          fontFamily: 'Montserrate',
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500))),
+                  SizedBox(height: size * 0.1),
+                  ClipRRect(
+                    //email field
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: TextField(
+                      focusNode: _focusNode1,
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        hintText: 'Enter OTP',
+                        border: InputBorder.none,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              const BorderSide(color: Color(0xff1D4771)),
+                        ),
+                        filled: true,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: size * 0.05),
+                  TextButton(
+                    //login button
                     child: Container(
                       width: double.infinity,
                       height: 50,
@@ -98,8 +144,8 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                           fontWeight: FontWeight.w500),
                     ),
                     onPressed: () {},
-                  )
-                ],
+                  ),  
+                  ]
               ),
             ),
           ),
