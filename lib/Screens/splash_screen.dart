@@ -27,11 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
           child: Container(
-            height: size*0.4, width: size*0.4,
+            height: size*0.6, width: size*0.4,
               decoration: const BoxDecoration(
-                color: Colors.white,
                 image: DecorationImage(
-                  image: AssetImage('assets/images/mskgif.gif'),
+                  image: AssetImage('assets/images/mskgifNew.gif'),
                   fit: BoxFit.cover,
                   repeat: ImageRepeat.noRepeat,
                 ),
