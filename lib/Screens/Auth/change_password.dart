@@ -30,8 +30,24 @@ class _ChangePasswordState extends State<ChangePassword> {
       child: Consumer(
         builder: (context, ThemeModel themeNotifier, child) {
           return Scaffold(
+            //----------------------------------------------
+            // Back button
+            //----------------------------------------------
+
+            floatingActionButton: Padding(
+              padding: EdgeInsets.only(left: size * 0.06, bottom: size * 0.05),
+              child: FloatingActionButton(
+                backgroundColor: const Color(0xff1D4771),
+                child: const Icon(Icons.arrow_back_ios_new),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.startFloat,
             body: Padding(
-              padding: EdgeInsets.all(size*0.1),
+              padding: EdgeInsets.all(size * 0.1),
               child: Center(
                 child: SingleChildScrollView(
                   child: Form(
@@ -39,32 +55,23 @@ class _ChangePasswordState extends State<ChangePassword> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        
-
                         //----------------------------------------------
                         // Forgot password details
                         //----------------------------------------------
                         Column(
                           children: [
-                            SizedBox(//for logo
-                  height: size*0.20,
-                  child: Image.asset('assets/images/msklogo.png')
-                ),
-                            // Image.asset(
-                            //   'assets/images/msklogo.png',
-                            //   height: 76,
-                            //   width: 76,
-                            // ),
-                            SizedBox(height: size*0.1),
-                            const Text(
-                              'Change Password',
-                              style: TextStyle(
-                      fontFamily: 'Montserrate',
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500
-                  )
-                            ),
-                            SizedBox(height: size*0.1),
+                            SizedBox(
+                                //for logo
+                                height: size * 0.20,
+                                child:
+                                    Image.asset('assets/images/msklogo.png')),
+                            SizedBox(height: size * 0.1),
+                            const Text('Change Password',
+                                style: TextStyle(
+                                    fontFamily: 'Montserrate',
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w500)),
+                            SizedBox(height: size * 0.1),
                             MyTextField(
                               controller: _emailController,
                               hintext: 'Email/Contact',
@@ -77,7 +84,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
-                            SizedBox(height: size*0.05),
+                            SizedBox(height: size * 0.05),
                             MyTextField(
                               controller: _newPassword,
                               hintext: 'New Password',
@@ -90,7 +97,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
-                            SizedBox(height: size*0.05),
+                            SizedBox(height: size * 0.05),
                             MyTextField(
                               controller: _confirmPassword,
                               hintext: 'Confirm Password',
@@ -105,7 +112,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
-                            SizedBox(height: size*0.05),
+                            SizedBox(height: size * 0.05),
                             MyTextField(
                               controller: _otpCode,
                               hintext: 'OTP code',
@@ -118,7 +125,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 return null;
                               },
                             ),
-                            SizedBox(height: size*0.05),
+                            SizedBox(height: size * 0.05),
                             PrimaryButton(
                               buttonName: 'Submit',
                               onPress: () {
@@ -130,29 +137,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                               },
                             ),
                           ],
-                        ),
-                        //----------------------------------------------
-                        // Back button
-                        //----------------------------------------------
-
-                        SizedBox(height: size*0.1),
-                        Align(
-                          alignment: Alignment
-                              .bottomLeft, // Align the FAB to the left side
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: FloatingActionButton(
-                              backgroundColor: const Color(0xFF1D4771),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                // Add your back button functionality here
-                              },
-                              child: const Icon(
-                                Icons.arrow_back_ios_new,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
                         ),
                       ],
                     ),

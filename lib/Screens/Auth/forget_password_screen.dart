@@ -28,6 +28,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
+          //----------------------------------------------
+          // Back button
+          //----------------------------------------------
+
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(left: size * 0.06, bottom: size * 0.05),
+            child: FloatingActionButton(
+              backgroundColor: const Color(0xff1D4771),
+              child: const Icon(Icons.arrow_back_ios_new),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
           body: SafeArea(
             child: Padding(
               padding: EdgeInsets.all(size * 0.1),
@@ -43,10 +58,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         //----------------------------------------------
                         Column(
                           children: [
-                            //----------------------------------------------
-                            // Logo
-                            //----------------------------------------------
-
                             SizedBox(
                                 //for logo
                                 height: size * 0.20,
@@ -97,27 +108,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               },
                             ),
                           ],
-                        ),
-                        //----------------------------------------------
-                        // Back button
-                        //----------------------------------------------
-                        Align(
-                          alignment: Alignment
-                              .bottomLeft, // Align the FAB to the left side
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 10, top: 100),
-                            child: FloatingActionButton(
-                              backgroundColor: const Color(0xFF1D4771),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                // Add your back button functionality here
-                              },
-                              child: const Icon(
-                                Icons.arrow_back_ios_new,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
                         ),
                       ],
                     ),

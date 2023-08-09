@@ -29,7 +29,7 @@ class MyStoreKeeper extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             // useInheritedMediaQuery: true,
-            // locale: DevicePreview.locale(context),
+            // locale: DevicePreview.locale(cgit ontext),
             // builder: DevicePreview.appBuilder,
             theme: themeNotifier.isDark ? ThemeData.dark() : ThemeData.light(),
             home: const SplashScreen(),
