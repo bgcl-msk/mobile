@@ -17,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final bool _isFocused1 = false;
   final FocusNode _focusNode2 = FocusNode();
   final bool _isFocused2 = false;
+  late bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,33 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //----------------------------------------------
-                   //       A button for the dark theme
-                  //        ----------------------------------------------
-                          Column(
-                            children: [
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 10, top: 50),
-                                  child: IconButton(
-                                    onPressed: () {
-                                      themeNotifier.isDark
-                                          ? themeNotifier.isDark = false
-                                          : themeNotifier.isDark = true;
-                                    },
-                                    icon: Icon(
-                                      themeNotifier.isDark
-                                          ? Icons.nightlight_round
-                                          : Icons.wb_sunny,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                   SizedBox(//for logo
                     height: size*0.20,
                     child: Image.asset('assets/images/msklogo.png')
@@ -124,15 +98,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Row(
                         children: [
-                          Checkbox(value: false,
-                            onChanged: (value){},),
+                          Checkbox(value: isChecked,
+                            activeColor: Color(0xff1D4771),
+                            onChanged: (value){
+                              setState(() {
+                                isChecked = value!;
+                              });
+                            },),
                           const Text('Remember me')
                         ],
                       ),
                       TextButton( //forget password
                         child: const Text('Forget password ?',
                           style: TextStyle(
-                              color: Color(0xff6C63FF)
+                            color: Colors.black,
+                            decoration: TextDecoration.underline,
+
                           ),),
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(

@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
           child: Container(
-            height: size*0.6, width: size*0.4,
+            height: size*0.4, width: size*0.4,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/mskgifNew.gif'),

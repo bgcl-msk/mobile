@@ -88,7 +88,7 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                     TextButton(
                       child: const Text('Didn\'t receive any code ?',
                       style: TextStyle(
-                        color: Colors.blueGrey,
+                        color: Colors.black,
                         fontSize: 13,
                         fontWeight: FontWeight.w500
                       ),
