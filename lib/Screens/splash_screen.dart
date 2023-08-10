@@ -27,6 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
           child: Container(
+            margin: EdgeInsets.only(bottom: size*0.1),
             height: size*0.4, width: size*0.4,
               decoration: const BoxDecoration(
                 image: DecorationImage(

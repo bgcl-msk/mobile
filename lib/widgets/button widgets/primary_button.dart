@@ -11,19 +11,22 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var deviceSize = MediaQuery.of(context).size;
+    double deviceSize = MediaQuery.of(context).size.width;
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return GestureDetector(
           onTap: onPress,
-          child: Container(
-            height: 50,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: const Color(0xFF1D4771),
-                borderRadius: BorderRadius.circular(10.0)),
-            child:
-            Center(child: Text(buttonName, style: textStyle(themeNotifier))),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Container(
+              height: 50,
+              width: deviceSize*0.35,
+              decoration: BoxDecoration(
+                  color: const Color(0xFF1D4771),
+                  borderRadius: BorderRadius.circular(10.0)),
+              child:
+              Center(child: Text(buttonName, style: textStyle(themeNotifier))),
+            ),
           ),
         );
       },

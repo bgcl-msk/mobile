@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Text( //for welcome text
                       'Welcome back',
                     style: TextStyle(
-                        fontFamily: 'Montserrate',
+                        fontFamily: 'Montserrat-Regular',
                         fontSize: 24,
                         fontWeight: FontWeight.w500
                     )),
@@ -122,19 +122,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       )
                     ],
                   ),
-                  SizedBox(height: size*0.1),
+                  SizedBox(height: size*0.05),
                   TextButton( //login button
-                    child: Container(
-                      width: double.infinity,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          color: const Color(0xff1D4771),
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      child: Center(
-                        child: Text('Login  >',
-                          style: TextStyles().kbuttonStyle
-                         ),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        width: size*0.35,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: const Color(0xff1D4771),
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                          child: Center(
+                            child: Text('Login  >',
+                              style: TextStyles().kbuttonStyle
+                           ),
+                        ),
                       ),
                     ),
                     onPressed: () {  },
