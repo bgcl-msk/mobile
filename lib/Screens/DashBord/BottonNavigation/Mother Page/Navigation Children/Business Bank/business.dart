@@ -42,7 +42,7 @@ class _BusinessState extends State<Business> {
 
     return Scaffold(
       //backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: const CustomAppBar(child: Text('Business')),
+      //appBar: const CustomAppBar(child: Text('Business')),
 
       body: Consumer<BusinessDataProvider>(
         builder: (context, dataProvider, _) {

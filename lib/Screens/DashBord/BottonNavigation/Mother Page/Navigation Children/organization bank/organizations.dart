@@ -46,6 +46,7 @@ class _OrganizationState extends State<Organization> {
 
       body: Consumer<OrganizationDataProvider>(
         builder: (context, dataProvider, _) {
+          final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
           final cards = dataProvider.cards;
           return ListView.builder(
             padding: const EdgeInsets.all(10),
@@ -56,8 +57,13 @@ class _OrganizationState extends State<Organization> {
                 height: 160,
                 child: Card(
                   elevation: 5,
+                  color: isDarkTheme ? const Color(0xFF3B3A38) : Colors.white,
                   shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.grey, width: 1),
+                      side: BorderSide(
+                          color: isDarkTheme
+                              ? const Color(0xFF3B3A38)
+                              : Colors.grey,
+                          width: 0.7),
                       borderRadius: BorderRadius.circular(10.0)),
                   margin: const EdgeInsets.all(5),
                   child: Padding(
@@ -74,11 +80,13 @@ class _OrganizationState extends State<Organization> {
                               children: [
                                 Text(
                                   card.name,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                   fontFamily: 'Poppians',
+                                    fontFamily: 'Poppians',
                                     fontSize: 16,
-                                    color: Colors.black,
+                                    color: isDarkTheme
+                                        ? const Color(0xFFFFFFFF)
+                                        : const Color(0xFF000000),
                                   ),
                                 ),
                                 const SizedBox(height: 5),
@@ -111,20 +119,26 @@ class _OrganizationState extends State<Organization> {
                               padding: const EdgeInsets.all(10),
                               //margin: const EdgeInsets.only(bottom: 10),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: isDarkTheme
+                                    ? const Color(0xFF3B3A38)
+                                    : const Color(0xFFFFFFFF),
                                 borderRadius: BorderRadius.circular(5),
                                 border: Border.all(
-                                  color: Colors.grey, // Border color
-                                  
-                                  width: 0.1, // Border width
+                                  color:
+                                      isDarkTheme ? Colors.white : Colors.grey,
+
+                                  width:
+                                      isDarkTheme ? 1.5 : 0.5, // Border width
                                 ),
                               ),
                               child: Text(
                                 cdate,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'Poppians',
-                                  color: Colors.black,
+                                  color: isDarkTheme
+                                      ? const Color(0xFFFFFFFF)
+                                      : const Color(0xFF3B3A38),
                                   fontSize: 16,
                                 ),
                               ),
@@ -149,7 +163,6 @@ class _OrganizationState extends State<Organization> {
                                 size: 35,
                               ),
                             ),
-                            
                           ],
                         ),
                       ],

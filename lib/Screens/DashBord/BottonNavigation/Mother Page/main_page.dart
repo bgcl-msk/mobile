@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:speed_dial_fab/speed_dial_fab.dart';
 
-
 import '../../../../widgets/button widgets/FABs/business_fab.dart';
+import 'Navigation Children/Business Bank/business_Center.dart';
 import 'Navigation Children/organization bank/organizationCenter.dart';
 import '../../../../dark theme/theme_model.dart';
 import '../../../../widgets/button widgets/FABs/organization_fab.dart';
@@ -26,8 +26,8 @@ class _MotherPageState extends State<MotherPage> {
     const Home(),
     OrganizationHome(),
     //const Organization(),
-     Business(),
-    
+     BusinessHome(),
+
     const Notifications(),
     const Support(),
     //const Account(),
@@ -35,18 +35,22 @@ class _MotherPageState extends State<MotherPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       body: IndexedStack(
         index: currentIndex,
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: const Color(0xFF1D4771),
+        selectedItemColor:
+            isDarkTheme ? Colors.white : const Color(0xFF00376D),
         iconSize: 20,
         showSelectedLabels: true,
         showUnselectedLabels: true,
-        unselectedItemColor: Colors.black,
-        backgroundColor: Theme.of(context).primaryColor,
+        unselectedItemColor: isDarkTheme ? Colors.grey : Colors.black,
+        backgroundColor: isDarkTheme
+            ? const Color(0xFF3B3A38)
+            : const Color(0xFF00376D),
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
@@ -109,22 +113,6 @@ class _MotherPageState extends State<MotherPage> {
           () => {},
           () => {},
           () => {
-            showModalBottomSheet<void>(
-                  isScrollControlled: true,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(15.0)),
-                  ),
-                  context: context,
-                  builder: (BuildContext context) {
-                    
-                    return const BusinessFAB(); // Use your custom bottom sheet here
-                  },
-                  
-                ),
-          },
-          () => {
-            
                 showModalBottomSheet<void>(
                   isScrollControlled: true,
                   shape: const RoundedRectangleBorder(
@@ -133,12 +121,22 @@ class _MotherPageState extends State<MotherPage> {
                   ),
                   context: context,
                   builder: (BuildContext context) {
-                    
+                    return const BusinessFAB(); // Use your custom bottom sheet here
+                  },
+                ),
+              },
+          () => {
+                showModalBottomSheet<void>(
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(15.0)),
+                  ),
+                  context: context,
+                  builder: (BuildContext context) {
                     return const OrganizationFAB(); // Use your custom bottom sheet here
                   },
-                  
                 ),
-                
               }
         ],
         // secondaryBackgroundColor: Colors.green,

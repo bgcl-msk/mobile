@@ -6,6 +6,7 @@ import 'Screens/splash_screen.dart';
 import 'package:get/get.dart';
 
 import 'dark theme/darkTheme.dart';
+import 'dark theme/themeClass.dart';
 import 'widgets/model/OrganizationDataProvider.dart';
 
 void main() {
@@ -33,24 +34,33 @@ class MyStoreKeeper extends StatefulWidget {
 }
 
 class _MyStoreKeeperState extends State<MyStoreKeeper> {
+
+  // ThemeMode _themeMode = ThemeMode.light;
+
+  // void _toggleTheme() {
+  //   setState(() {
+  //     _themeMode = _themeMode == ThemeMode.light
+  //         ? ThemeMode.dark
+  //         : ThemeMode.light;
+  //   });
+  // }
+  final bool _iconBool = false;
   @override
   Widget build(BuildContext context) {
-    return themeManager(
-      themeBuilder: (ThemeData ) {
+    
+
+    
         return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         useInheritedMediaQuery: true,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
-    
-        //darkTheme: ThemeData.dark(),
-        darkTheme: darkTheme,
-        theme: ThemeData ,
-        themeMode: ThemeMode.system,
+        //themeMode: currentThemeMode,
+        theme: ThemeClass.lightTheme,
+        //theme: _iconBool ? ThemeClass.lightTheme : ThemeClass.darkTheme,
+        darkTheme: ThemeClass.darkTheme,
         home: const SplashScreen(),
       );
-      }
-       
-    );
+      
   }
 }

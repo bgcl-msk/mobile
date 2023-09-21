@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:mobilemsk/Screens/DashBord/BottonNavigation/Mother%20Page/Navigation%20Children/organization%20bank/deleted_organization.dart';
 import 'package:mobilemsk/Screens/DashBord/BottonNavigation/Mother%20Page/Navigation%20Children/organization%20bank/organizations.dart';
 
-import 'organization_settings.dart';
-import 'pendding_deletion.dart';
+
 import '../../../../../../widgets/DashBordAppBar/appBar.dart';
+import 'business.dart';
+import 'business_pending_deletion.dart';
+import 'deletedBusiness.dart';
 // Import the DeletedOrganizationsPage widget
 
-class OrganizationHome extends StatefulWidget {
+class BusinessHome extends StatefulWidget {
   @override
-  _OrganizationHomeState createState() => _OrganizationHomeState();
+  _BusinessHomeState createState() => _BusinessHomeState();
 }
 
-class _OrganizationHomeState extends State<OrganizationHome>
+class _BusinessHomeState extends State<BusinessHome>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -32,7 +34,7 @@ class _OrganizationHomeState extends State<OrganizationHome>
   Widget build(BuildContext context) {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      appBar: const CustomAppBar(child: SearchBar()),
+      appBar: const CustomAppBar(child: Text('Business')),
       body: Column(
         children: [
           const SizedBox(
@@ -65,9 +67,9 @@ class _OrganizationHomeState extends State<OrganizationHome>
                     ? const Color(0xFFFFFFFF)
                     : const Color(0xFF000000),
                 tabs: const [
-                  Tab(text: 'Organization'),
+                  Tab(text: 'Business'),
                   Tab(text: 'Pending Deletion'),
-                  Tab(text: 'Deleted Organization'),
+                  Tab(text: 'Deleted Business'),
                   //Tab(text: 'Organization Settings'),
                 ],
               ),
@@ -77,9 +79,9 @@ class _OrganizationHomeState extends State<OrganizationHome>
             child: TabBarView(
               controller: _tabController,
               children: const [
-                Organization(),
-                PendingOrganization(),
-                DeletedOrganizationsPage(),
+                Business(),
+                BusinessPendingDeletion(),
+                DeletedBusiness(),
                 //OrganizationSettings(),
               ],
             ),

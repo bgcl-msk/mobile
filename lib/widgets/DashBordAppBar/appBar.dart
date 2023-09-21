@@ -3,26 +3,56 @@ import 'package:get/get.dart';
 
 import '../../dark theme/darkTheme.dart';
 import '../../dark theme/lightTheme.dart';
+import '../../dark theme/themeClass.dart';
 
 
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
+
   const CustomAppBar({super.key, required this.child});
   final Widget child;
 
+
   @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+  
+  @override
+  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(85.0);
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
+  //Size get preferredSize => const Size.fromHeight(85.0);
 
   final IconData lightIcon = Icons.wb_sunny;
+
   final IconData darkIcon = Icons.nightlight_round;
-  
+
+  ThemeData _currentTheme = ThemeClass.lightTheme;
+  ThemeMode currentThemeMode = ThemeMode.system;
+
+  void _toggleLightTheme() {
+    setState(() {
+      currentThemeMode = ThemeMode.dark;
+    });
+  }
+
+  void _toggleDarkTheme() {
+    setState(() {
+      currentThemeMode = ThemeMode.light;
+    });
+  }
+
+   bool _iconBool = false;
+
 
   @override
   Widget build(BuildContext context) {
     //final themeManager = ThemeManager();
    
     return AppBar(
-        backgroundColor: const Color(0xFF00376D),
+        //backgroundColor: const Color(0xFF00376D),
+        backgroundColor:Theme.of(context).appBarTheme.backgroundColor ,
         centerTitle: true,
         leading: Column(
           children: [
@@ -34,7 +64,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             const Text('Titus')
           ],
         ),
-        title: child,
+        title: widget.child,
         flexibleSpace: Align(
           alignment: Alignment.centerRight,
           child: Column(
@@ -47,14 +77,17 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 children: [
                   GestureDetector(
                     onTap: (){
-                      lightTheme;
-                    },
+                    //   Get.isDarkMode
+                    // ? Get.changeTheme(ThemeClass.lightTheme)
+                    // : Get.changeTheme(ThemeClass.darkTheme);
+                    Get.changeTheme(ThemeClass.lightTheme);
+                     },
                     child: Icon(lightIcon,size: 15,color: Colors.white,)),
                     const SizedBox(width: 7,),
                   GestureDetector(
-                    onTap: (){darkTheme;
-                      //Get.changeTheme(ThemeData.dark());
-                      },
+                    onTap: (){
+                      Get.changeTheme(ThemeClass.darkTheme);
+                    },
                     child: Icon(darkIcon,size: 15,color: Colors.white,)),
                     const SizedBox(width: 10,),
                 ],

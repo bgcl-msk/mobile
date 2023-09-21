@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-
 import '../../../../../../widgets/model/OrganizationCard.dart';
 import '../../../../../../widgets/model/OrganizationDataProvider.dart';
 
@@ -12,10 +11,11 @@ class PendingOrganization extends StatefulWidget {
   @override
   State<PendingOrganization> createState() => _PendingOrganizationState();
 }
+
 class _PendingOrganizationState extends State<PendingOrganization> {
-  
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
 
     final organizationDataProvider =
         Provider.of<OrganizationDataProvider>(context);
@@ -28,8 +28,8 @@ class _PendingOrganizationState extends State<PendingOrganization> {
       switch (item) {
         case 0:
           // Permanently delete the card
-         organizationDataProvider.penddingDeletion(organizationCard);
-         
+          organizationDataProvider.penddingDeletion(organizationCard);
+
           break;
         case 1:
           // Restore the card
@@ -37,7 +37,8 @@ class _PendingOrganizationState extends State<PendingOrganization> {
           break;
       }
     }
-    return   Scaffold(
+
+    return Scaffold(
       body: ListView.builder(
         padding: const EdgeInsets.all(10),
         itemCount: deletedCards.length,
@@ -47,13 +48,17 @@ class _PendingOrganizationState extends State<PendingOrganization> {
             height: 160,
             child: Card(
               elevation: 5,
+              color: isDarkTheme ? const Color(0xFF3B3A38) : Colors.white,
               shape: RoundedRectangleBorder(
-                side: const BorderSide(color: Colors.grey, width: 1),
+                side: BorderSide(
+                    color: isDarkTheme ? const Color(0xFF3B3A38) : Colors.grey,
+                    width: 1),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               margin: const EdgeInsets.all(5),
               child: Padding(
-                padding: const EdgeInsets.only(left: 33,bottom: 15,right: 20,top: 10),
+                padding: const EdgeInsets.only(
+                    left: 33, bottom: 15, right: 20, top: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -65,10 +70,12 @@ class _PendingOrganizationState extends State<PendingOrganization> {
                           children: [
                             Text(
                               card.name,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16,
-                                color: Colors.black,
+                                color: isDarkTheme
+                                    ? const Color(0xFFFFFFFF)
+                                    : const Color(0xFF000000),
                               ),
                             ),
                             const SizedBox(height: 5),
@@ -85,8 +92,7 @@ class _PendingOrganizationState extends State<PendingOrganization> {
                         PopupMenuButton<int>(
                           onSelected: (item) => handleClick(item, card),
                           itemBuilder: (context) => const [
-                            PopupMenuItem<int>(
-                                value: 0, child: Text('Delete')),
+                            PopupMenuItem<int>(value: 0, child: Text('Delete')),
                             PopupMenuItem<int>(
                                 value: 1, child: Text('Restore')),
                           ],
@@ -99,18 +105,22 @@ class _PendingOrganizationState extends State<PendingOrganization> {
                         Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: isDarkTheme
+                                ? const Color(0xFF3B3A38)
+                                : const Color(0xFFFFFFFF),
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: Colors.grey, // Border color
-                              width: 0.1, // Border width
+                              color: isDarkTheme ? Colors.white : Colors.grey,
+                              width: isDarkTheme ? 1.5 : 0.5,
                             ),
                           ),
                           child: Text(
                             cdate,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              color: Colors.grey,
+                              color: isDarkTheme
+                                  ? const Color(0xFFFFFFFF)
+                                  : const Color(0xFF3B3A38),
                               fontSize: 16,
                             ),
                           ),
@@ -129,7 +139,6 @@ class _PendingOrganizationState extends State<PendingOrganization> {
           );
         },
       ),
-
     );
   }
 }
