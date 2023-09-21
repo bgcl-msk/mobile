@@ -17,7 +17,7 @@ class ForgotPassword extends StatefulWidget {
 // an email controller
 //----------------------------------------------
 final _formKey = GlobalKey<FormState>();
-//final _emailController = TextEditingController();
+// final _emailController = TextEditingController();
 
 final FocusNode _focusNode1 = FocusNode();
 

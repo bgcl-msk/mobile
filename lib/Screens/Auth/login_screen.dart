@@ -18,6 +18,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final FocusNode _focusNode2 = FocusNode();
   final bool _isFocused2 = false;
   late bool isChecked = false;
+  late bool isObscured = true;
+
+  @override
+  void initState() {
+    isObscured = true;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ClipRRect( //password field
                     borderRadius: BorderRadius.circular(10),
                     child: TextField(
+                      obscureText: isObscured,
                       focusNode: _focusNode2,
                       cursorColor: Colors.black,
                       decoration: InputDecoration(
@@ -98,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         children: [
                           Checkbox(value: isChecked,
-                            activeColor: Color(0xff1D4771),
+                            activeColor: const Color(0xff1D4771),
                             onChanged: (value){
                               setState(() {
                                 isChecked = value!;
@@ -122,9 +130,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   SizedBox(height: size*0.05),
-                  TextButton( //login button
-                    child: Align(
-                      alignment: Alignment.centerRight,
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {  },
                       child: Container(
                         width: size*0.35,
                         height: 50,
@@ -139,7 +148,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    onPressed: () {  },
                   ),
                 ],
               ),

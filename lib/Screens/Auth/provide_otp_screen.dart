@@ -48,7 +48,7 @@ class _ProvideOTPScreenState extends State<ProvideOTPScreen> {
                       const Text( //for welcome text
                           'Provide OTP',
                           style: TextStyle(
-                              fontFamily: 'Montserrate',
+                              fontFamily: 'Montserrat-Regular',
                               fontSize: 24,
                               fontWeight: FontWeight.w500
                           )),

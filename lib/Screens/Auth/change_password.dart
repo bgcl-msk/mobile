@@ -59,7 +59,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           const Text(
                             'Change Password',
                             style: TextStyle(
-                        fontFamily: 'Montserrate',
+                        fontFamily: 'Montserrat-Regular',
                         fontSize: 24,
                         fontWeight: FontWeight.w500
                   )
