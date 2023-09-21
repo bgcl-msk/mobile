@@ -22,8 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
-    return Consumer(
-      builder: (context, ThemeModel themeNotifier, child){
+    
         return Scaffold(
           body: SafeArea(
             child: Padding(
@@ -149,8 +148,6 @@ class _LoginScreenState extends State<LoginScreen> {
           )
       );
 
-      }
-       
-    );
+      
   }
 }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-import '../../dark theme/theme_model.dart';
 import '../../widgets/Text Field Widgets/textfields.dart';
 import '../../widgets/button widgets/primary_button.dart';
-import '../welcome_screen.dart';
+import '../DashBord/BottonNavigation/Mother Page/main_page.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});
@@ -24,11 +22,8 @@ final _confirmPassword = TextEditingController();
 class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-    return Consumer(
-      builder: (context, ThemeModel themeNotifier, child) {
+     double size = MediaQuery.of(context).size.width;
+     double height = MediaQuery.of(context).size.height;
         return Scaffold(
           floatingActionButton: Padding(
             padding: EdgeInsets.only(left: size*0.06, bottom: size*0.05),
@@ -116,7 +111,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                             buttonName: 'Confirm',
                             onPress: () {
                               if (_formKey.currentState!.validate()) {
-                                Get.to(const WelcomeScreen(),
+                                Get.to(const MotherPage(),
                                     duration: const Duration(seconds: 1),
                                     transition: Transition.native);
                               }
@@ -131,7 +126,6 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
           ),
         );
-      },
-    );
+      
   }
 }

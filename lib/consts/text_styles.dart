@@ -13,4 +13,10 @@ class TextStyles{
 
 
 
+
 }
+
+const TextStyle darkModeTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 24,
+);

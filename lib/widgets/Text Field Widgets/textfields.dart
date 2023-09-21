@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../dark theme/theme_model.dart';
 
 class MyTextField extends StatelessWidget {
   final String hintext;
@@ -19,27 +17,23 @@ class MyTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ThemeModel themeNotifier, child) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
-          child: TextFormField(
-            keyboardType: keyboardType,
-            controller: controller,
-            validator: validator,
-            cursorColor: Colors.black,
-            decoration: InputDecoration(
-              filled: true,
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: Color(0xff1D4771)),
-              ),
-              hintText: hintext,
-              border: InputBorder.none,
-            ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10.0),
+      child: TextFormField(
+        keyboardType: keyboardType,
+        controller: controller,
+        validator: validator,
+        cursorColor: Colors.black,
+        decoration: InputDecoration(
+          filled: true,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: Color(0xff1D4771)),
           ),
-        );
-      },
+          hintText: hintext,
+          border: InputBorder.none,
+        ),
+      ),
     );
   }
 }

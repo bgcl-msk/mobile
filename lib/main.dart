@@ -1,41 +1,56 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_theme_manager/flutter_theme_manager.dart';
+import 'package:provider/provider.dart';
 import 'Screens/splash_screen.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-import 'dark theme/theme_model.dart';
 
+import 'dark theme/darkTheme.dart';
+import 'widgets/model/OrganizationDataProvider.dart';
 
 void main() {
   runApp(
-      DevicePreview(builder: (context)=> const MyStoreKeeper(),
-          enabled: true,
-      )
-    //const MyStoreKeeper()
-  );
-
+  DevicePreview(
+    builder: (context) => MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => OrganizationDataProvider()),
+        ChangeNotifierProvider(create: (context) => BusinessDataProvider()),
+      ],
+      child: const MyStoreKeeper(),
+    ),
+    enabled: true,
+  ),
+);
 
 }
 
-class MyStoreKeeper extends StatelessWidget {
+
+class MyStoreKeeper extends StatefulWidget {
   const MyStoreKeeper({Key? key}) : super(key: key);
 
   @override
+  State<MyStoreKeeper> createState() => _MyStoreKeeperState();
+}
+
+class _MyStoreKeeperState extends State<MyStoreKeeper> {
+  @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ThemeModel(),
-      child: Consumer(
-        builder: (context, ThemeModel themeNotifier, child) {
-          return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            useInheritedMediaQuery: true,
-            locale: DevicePreview.locale(context),
-            builder: DevicePreview.appBuilder,
-            theme: themeNotifier.isDark ? ThemeData.dark() : ThemeData.light(),
-            home: const SplashScreen(),
-          );
-        },
-      ),
+    return themeManager(
+      themeBuilder: (ThemeData ) {
+        return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+    
+        //darkTheme: ThemeData.dark(),
+        darkTheme: darkTheme,
+        theme: ThemeData ,
+        themeMode: ThemeMode.system,
+        home: const SplashScreen(),
+      );
+      }
+       
     );
   }
 }
