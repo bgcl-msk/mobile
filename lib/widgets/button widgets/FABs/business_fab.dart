@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../../model/OrganizationCard.dart';
 import '../../model/OrganizationDataProvider.dart';
-import '../secondary_button.dart';
+import '../big buttons/secondary_button.dart';
+
 
 class BusinessFAB extends StatefulWidget {
   const BusinessFAB({super.key});
@@ -13,11 +14,13 @@ class BusinessFAB extends StatefulWidget {
 }
 
 class _BusinessFABState extends State<BusinessFAB> {
-  @override
-  Widget build(BuildContext context) {
-    //String? selectedValue; // Variable to store the selected value
+
+  //String? selectedValue; // Variable to store the selected value
     final TextEditingController nameController = TextEditingController();
     final TextEditingController descriptionController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    
 
     List<String> locationOptions = ['Location', 'Ghana, Accra, Spintex', 'Ghana, Kumasi, Titus'];
     String? selectedValue = 'Location';
@@ -52,6 +55,7 @@ class _BusinessFABState extends State<BusinessFAB> {
     return FractionallySizedBox(
       heightFactor: 0.80,
       child: SingleChildScrollView(
+        
         child: Container(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -59,6 +63,7 @@ class _BusinessFABState extends State<BusinessFAB> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
+              SizedBox(height: size * 0.13),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -80,11 +85,7 @@ class _BusinessFABState extends State<BusinessFAB> {
                 style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               SizedBox(height: size * 0.05),
-              const Text(
-                'Business Name',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: size * 0.02),
+             
               //---------------------------------------------
               // Business Name
               //----------------------------------------------
@@ -102,7 +103,7 @@ class _BusinessFABState extends State<BusinessFAB> {
                     controller: nameController,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Name',
+                      hintText: 'Business Name',
                     ),
                   ),
                 ),
@@ -111,11 +112,7 @@ class _BusinessFABState extends State<BusinessFAB> {
               //---------------------------------------------
               // Business Location
               //----------------------------------------------
-              const Text(
-                'Location',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: size * 0.02),
+              
               ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
                 child: Container(
@@ -129,7 +126,7 @@ class _BusinessFABState extends State<BusinessFAB> {
                   child: DropdownButtonFormField<String>(
                     decoration: const InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Location',
+                      hintText: 'Business Location',
                       contentPadding: EdgeInsets.zero,
                     ),
                     items: locationOptions
@@ -153,11 +150,7 @@ class _BusinessFABState extends State<BusinessFAB> {
               //--------------------------
               // Select orgainization
               // -------------------------
-              const Text(
-                'Select Orgainization',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: size * 0.02),
+              
               ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
                 child: Container(
@@ -171,7 +164,7 @@ class _BusinessFABState extends State<BusinessFAB> {
                   child: DropdownButtonFormField<String>(
                     decoration: const InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Location',
+                      hintText: 'Select orgainization',
                       contentPadding: EdgeInsets.zero,
                     ),
                     items: selectOrgainization
@@ -195,11 +188,7 @@ class _BusinessFABState extends State<BusinessFAB> {
               // Business Desc
               //--------------------------
               SizedBox(height: size * 0.05),
-              const Text(
-                'Description',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: size * 0.02),
+              
               ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
                 child: Container(
@@ -220,7 +209,7 @@ class _BusinessFABState extends State<BusinessFAB> {
                   ),
                 ),
               ),
-              SizedBox(height: size * 0.02),
+              SizedBox(height: size * 0.04),
               SecondaryButton(buttonName: 'Submit', onPress: handleSubmit, color: const Color(0xFF1D4771),)
             ],
           ),

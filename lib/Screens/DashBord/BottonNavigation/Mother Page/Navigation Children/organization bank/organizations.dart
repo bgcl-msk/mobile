@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../../widgets/DashBordAppBar/appBar.dart';
 import '../../../../../../widgets/model/OrganizationCard.dart';
 import '../../../../../../widgets/model/OrganizationDataProvider.dart';
 import 'update_organization.dart';
@@ -43,7 +44,7 @@ class _OrganizationState extends State<Organization> {
 
     return Scaffold(
       //backgroundColor: Theme.of(context).colorScheme.background,
-
+      //appBar: const CustomAppBar(child: SearchBar()),
       body: Consumer<OrganizationDataProvider>(
         builder: (context, dataProvider, _) {
           final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
@@ -117,7 +118,7 @@ class _OrganizationState extends State<Organization> {
                           children: [
                             Container(
                               padding: const EdgeInsets.all(10),
-                              //margin: const EdgeInsets.only(bottom: 10),
+                              
                               decoration: BoxDecoration(
                                 color: isDarkTheme
                                     ? const Color(0xFF3B3A38)
@@ -128,7 +129,7 @@ class _OrganizationState extends State<Organization> {
                                       isDarkTheme ? Colors.white : Colors.grey,
 
                                   width:
-                                      isDarkTheme ? 1.5 : 0.5, // Border width
+                                      isDarkTheme ? 1.5 : 0.5, 
                                 ),
                               ),
                               child: Text(

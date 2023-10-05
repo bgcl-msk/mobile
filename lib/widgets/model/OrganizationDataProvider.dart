@@ -3,16 +3,23 @@ import 'package:flutter/foundation.dart';
 import 'OrganizationCard.dart';
 
 class OrganizationDataProvider extends ChangeNotifier {
+  // saving created organization 
   final List<OrganizationCard> _cards = [];
-  final List<OrganizationCard> _deletedCards = [];
+
+  // saving pending deletion
   final List<OrganizationCard> _pendingDeletion = [];
+
+
+  // saving deleted organization
+  final List<OrganizationCard> _deletedCards = [];
+  
 
   final List<OrganizationCard> _permenentDeletedCards = [];
 
+// getters
   List<OrganizationCard> get cards => _cards;
   List<OrganizationCard> get pendingDeletion => _pendingDeletion;
   List<OrganizationCard> get deletedCards => _deletedCards;
-
   List<OrganizationCard> get permenentDeletedCards => _permenentDeletedCards;
 
 
@@ -65,17 +72,50 @@ class OrganizationDataProvider extends ChangeNotifier {
 }
 
 
-// Business
+
+
+
 class BusinessDataProvider extends ChangeNotifier {
-final List<BusinessCard> _businessCards = [];
+  final List<BusinessCard> _businessCards = [];
+  final List<BusinessCard> _pendingDeletion = [];
+  final List<BusinessCard> _deletion = [];
 
-List<BusinessCard> get cards => _businessCards;
+  List<BusinessCard> get bCards => _businessCards;
+  List<BusinessCard> get pendingBusinessDeletion => _pendingDeletion;
+  List<BusinessCard> get businessDeletion => _deletion;
 
-/// adding new Business
+  /// Add a new business card.
   void addBusiness(BusinessCard business) {
     _businessCards.add(business);
     notifyListeners();
   }
+
+  /// Delete a business card.
+  void removeCard(BusinessCard busCard) {
+    _businessCards.remove(busCard);
+    _deletion.add(busCard); // Move to pending deletion.
+    notifyListeners();
+  }
+
+  /// Move a business card from pending deletion to deletion.
+  void movePendingToDeletion(BusinessCard busCard) {
+    _deletion.remove(busCard);
+    _pendingDeletion.add(busCard);
+    notifyListeners();
+  }
+
+   /// pendding deleting new card
+  void deletedBusiness(BusinessCard busCard) {
+    _pendingDeletion.remove(busCard);
+    //permenentDeletedCards.add(card); // Store the deleted card
+    notifyListeners();
+  }
+
+
+  /// Restore a deleted business card.
+  void restoreBusinessCard(BusinessCard busCard) {
+    _deletion.remove(busCard);
+    _businessCards.add(busCard); // Restore the card
+    notifyListeners();
+  }
 }
-
-

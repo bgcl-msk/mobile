@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../widgets/button widgets/secondary_button.dart';
+import '../../../../../../widgets/button widgets/big buttons/secondary_button.dart';
+
+
 
 class OrganizationSettings extends StatefulWidget {
   const OrganizationSettings({super.key});
@@ -16,6 +18,8 @@ class _OrganizationSettingsState extends State<OrganizationSettings> {
   List<String> locationOptions = [
     'Location',
     'Ghana, Accra, Spintex',
+    'Ghana, Kumasi, Titus'
+    'Ghana, Kumasi, Titus'
     'Ghana, Kumasi, Titus'
   ];
   String? selectedValue = 'Location';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../dark theme/theme_model.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String buttonName;

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mobilemsk/widgets/model/OrganizationDataProvider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../widgets/DashBordAppBar/appBar.dart';
-import '../../../../../../widgets/model/OrganizationDataProvider.dart';
+import '../../../../../../widgets/Useable functions/gradient_avator.dart';
+import '../../../../../../widgets/model/OrganizationCard.dart';
 
 class Business extends StatefulWidget {
   const Business({super.key});
@@ -27,34 +29,35 @@ class _BusinessState extends State<Business> {
   @override
   Widget build(BuildContext context) {
     //double size = MediaQuery.of(context).size.width;
-    // final BusinessDataProvider =
-    //     Provider.of<BusinessDataProvider>(context);
+    final businessDataProvider =
+        Provider.of<BusinessDataProvider>(context);
 
-    // void handleClick(int item, BusinessCard BusinessCard) {
-    //   switch (item) {
-    //     case 0:
-    //       BusinessDataProvider.removeCard(BusinessCard);
-    //       break;
-    //     case 1:
-    //       break;
-    //   }
-    // }
+        
+
+    void handleClick(int item, BusinessCard businessCard) {
+      switch (item) {
+        case 0:
+          businessDataProvider.removeCard(businessCard);
+          break;
+        case 1:
+          break;
+      }
+    }
 
     return Scaffold(
-      //backgroundColor: Theme.of(context).colorScheme.background,
-      //appBar: const CustomAppBar(child: Text('Business')),
-
+      //appBar: const CustomAppBar(child: SearchBar()),
       body: Consumer<BusinessDataProvider>(
         builder: (context, dataProvider, _) {
           double size = MediaQuery.of(context).size.width;
-          final businessCards = dataProvider.cards;
+          final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+          final businessCards = dataProvider.bCards;
           return ListView.builder(
             padding: const EdgeInsets.all(10),
             itemCount: businessCards.length,
             itemBuilder: (context, index) {
               final bCard = businessCards[index];
               return SizedBox(
-                height: 100,
+                height: 105,
                 child: Card(
                   elevation: 5,
                   shape: RoundedRectangleBorder(
@@ -62,35 +65,73 @@ class _BusinessState extends State<Business> {
                       borderRadius: BorderRadius.circular(10.0)),
                   margin: const EdgeInsets.all(5),
                   child: Padding(
-                    padding:  EdgeInsets.only(
-                        left: 33, bottom: 15, right: 20, top: 10),
-                    child: Row(
-                      
-                      children:[
-                        Text('D'),
+                      padding: const EdgeInsets.only(
+                          left: 10, bottom: 7, right: 10, top: 7),
+                      child: Row(children: [
+                         GradientAvatar(
+                            gradientColors: const[
+                              Color(0xFF00376D),
+                              Color(0xff457BB0)
+                            ],
+                            radius: 30.0,
+                            child: Center(
+                                child: Text(
+                              bCard.name[0].toUpperCase(),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontFamily: 'Poppians',
+                                color: Color(0xFFFFFFFF),
+                                fontSize: 20,
+                              ),
+                            ))),
                         SizedBox(width: size * 0.05),
                         Column(
-                          
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('fff'),
-                            Text('fff'),
-                            Text('fff'),
-                          ]
-                        ),
+                          Text(
+                            bCard.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppians',
+                              color: isDarkTheme
+                                        ? const Color(0xFFFFFFFF)
+                                        : const Color(0xFF000000),
+                              fontSize: 16,
+                            ),
+                          ),
+                            Text(bCard.location,
+                          ),
+                          Expanded(child: Container()),
+                           Text(cdate),
+                        ]),
                         Expanded(child: Container()),
-                        Column(
-                        
-                          children: [
-                            Text('fff'),
-                            Expanded(child: Container()),
-                            Text('fff'),
-                          ]
-                        )
-                      ]
-                    )
-                    
-                    
-                  ),
+                        Column(children: [
+                          PopupMenuButton<int>(
+                              onSelected: (item)=> handleClick(item, bCard),
+                              itemBuilder: (context) => const [
+                                PopupMenuItem<int>(
+                                    value: 0, child: Text('Delete')),
+                                PopupMenuItem<int>(
+                                    value: 1, child: Text('View Info')),
+                              ],
+                            ),
+                          Expanded(child: Container()),
+                          InkWell(
+                          onTap: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                    'Wait! I will fix you :)'),
+                              ),
+                            );
+                          },
+                          child: const ImageIcon(
+                            AssetImage("assets/images/edit.png"),
+                            size: 24,
+                          ),
+                        ),
+                        ])
+                      ])),
                 ),
               );
             },
@@ -108,152 +149,3 @@ class _BusinessState extends State<Business> {
 
 
 
-// ListTile(
-//                       leading: Text('D'),
-//                       title: Text(
-//                         bCard.name,
-//                         style: const TextStyle(
-//                           fontWeight: FontWeight.w600,
-//                           fontSize: 16,
-//                           color: Colors.black,
-//                         ),
-//                       ),
-//                       subtitle: Column(
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         mainAxisAlignment: MainAxisAlignment.start,
-//                         children: [
-//                           Text(
-//                             bCard.location,
-//                             style: const TextStyle(
-//                               color: Colors.grey,
-//                               fontSize: 16,
-//                             ),
-//                           ),
-//                           SizedBox(height: size * 0.05),
-//                           Row(
-//                             children: [
-//                               Text(
-//                                 cdate,
-//                                 style: const TextStyle(
-//                                   fontWeight: FontWeight.w600,
-//                                   color: Colors.grey,
-//                                   fontSize: 16,
-//                                 ),
-//                               ),
-//                               Expanded(child: Container()),
-//                               Text(
-//                             cdate,
-//                             style: const TextStyle(
-//                               fontWeight: FontWeight.w600,
-//                               color: Colors.grey,
-//                               fontSize: 16,
-//                             ),
-//                           ),
-//                             ],
-//                           ),
-//                         ],
-//                       ),
-//                       trailing: Text(
-//                         bCard.location,
-//                         style: const TextStyle(
-//                           color: Colors.grey,
-//                           fontSize: 16,
-//                         ),
-//                       ),
-//                     ),
-
-
-
-
-
-
-
-
-
-//Column(
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   children: [
-                    //     const SizedBox(height: 15),
-                    //     Row(
-                    //       children: [
-                    //         Column(
-                    //           crossAxisAlignment: CrossAxisAlignment.start,
-                    //           children: [
-                                // Text(
-                                //   bCard.name,
-                                //   style: const TextStyle(
-                                //     fontWeight: FontWeight.w600,
-                                //     fontSize: 16,
-                                //     color: Colors.black,
-                                //   ),
-                                // ),
-                    //             const SizedBox(height: 5),
-                                // Text(
-                                //   bCard.location,
-                                //   style: const TextStyle(
-                                //     color: Colors.grey,
-                                //     fontSize: 16,
-                                //   ),
-                                // ),
-                    //           ],
-                    //         ),
-                    //         Expanded(child: Container()),
-                    //         PopupMenuButton<int>(
-                    //           onSelected: (item) => handleClick(item, card),
-                    //           itemBuilder: (context) => const [
-                    //             PopupMenuItem<int>(
-                    //                 value: 0, child: Text('Delete')),
-                    //             PopupMenuItem<int>(
-                    //                 value: 1, child: Text('View Info')),
-                    //           ],
-                    //         ),
-                    //       ],
-                    //     ),
-                    //     Expanded(child: Container()),
-                    //     Row(
-                    //       children: [
-                    //         Container(
-                    //           padding: const EdgeInsets.all(10),
-                    //           //margin: const EdgeInsets.only(bottom: 10),
-                    //           decoration: BoxDecoration(
-                    //             color: Colors.white,
-                    //             borderRadius: BorderRadius.circular(10),
-                    //             border: Border.all(
-                    //               color: Colors.grey, // Border color
-                    //               width: 0.1, // Border width
-                    //             ),
-                    //           ),
-                            //   child: Text(
-                            //     cdate,
-                            //     style: const TextStyle(
-                            //       fontWeight: FontWeight.w600,
-                            //       color: Colors.black,
-                            //       fontSize: 16,
-                            //     ),
-                            //   ),
-                            // ),
-                    //         Expanded(child: Container()),
-                    //         InkWell(
-                    //           onTap: () {
-                    //             // showModalBottomSheet<void>(
-                    //             //   isScrollControlled: true,
-                    //             //   shape: const RoundedRectangleBorder(
-                    //             //     borderRadius: BorderRadius.vertical(
-                    //             //         top: Radius.circular(15.0)),
-                    //             //   ),
-                    //             //   context: context,
-                    //             //   builder: (BuildContext context) {
-                    //             //     return const UpdateBusiness();
-                    //             //   },
-                    //             // );
-                            //   },
-                            //   child: const ImageIcon(
-                            //     AssetImage("assets/images/edit.png"),
-                            //     size: 35,
-                            //   ),
-                            // ),
-                    //         //const Icon(Icons.edit)
-                    //       ],
-                    //     ),
-                    //   ],
-                    // ),

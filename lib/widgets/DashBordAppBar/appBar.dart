@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../dark theme/darkTheme.dart';
-import '../../dark theme/lightTheme.dart';
+
 import '../../dark theme/themeClass.dart';
 
 

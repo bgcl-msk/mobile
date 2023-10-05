@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobilemsk/Screens/DashBord/BottonNavigation/Mother%20Page/Navigation%20Children/organization%20bank/deleted_organization.dart';
-import 'package:mobilemsk/Screens/DashBord/BottonNavigation/Mother%20Page/Navigation%20Children/organization%20bank/organizations.dart';
 
 
 import '../../../../../../widgets/DashBordAppBar/appBar.dart';
@@ -80,7 +78,7 @@ class _BusinessHomeState extends State<BusinessHome>
               controller: _tabController,
               children: const [
                 Business(),
-                BusinessPendingDeletion(),
+                BusPendingOrganization(),
                 DeletedBusiness(),
                 //OrganizationSettings(),
               ],

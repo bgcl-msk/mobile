@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../model/OrganizationCard.dart';
 import '../../model/OrganizationDataProvider.dart';
-import '../secondary_button.dart';
+import '../big buttons/secondary_button.dart';
 
 class OrganizationFAB extends StatefulWidget {
   const OrganizationFAB({super.key});
@@ -13,13 +13,19 @@ class OrganizationFAB extends StatefulWidget {
 }
 
 class _OrganizationFABState extends State<OrganizationFAB> {
-  @override
-  Widget build(BuildContext context) {
-    //String? selectedValue; // Variable to store the selected value
+
+  //String? selectedValue; // Variable to store the selected value
     final TextEditingController nameController = TextEditingController();
     final TextEditingController descriptionController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    
 
-    List<String> locationOptions = ['Location', 'Ghana, Accra, Spintex', 'Ghana, Kumasi, Titus'];
+    List<String> locationOptions = [
+      'Location',
+      'Ghana, Accra, Spintex',
+      'Ghana, Kumasi, Titus'
+    ];
     String? selectedValue = 'Location';
 
     void handleSubmit() {
@@ -28,7 +34,6 @@ class _OrganizationFABState extends State<OrganizationFAB> {
       final String orgDescription = descriptionController.text;
       final String ids = UniqueKey().toString();
 
-      
       final OrganizationCard newCard = OrganizationCard(
         id: ids,
         name: orgName,
@@ -45,15 +50,16 @@ class _OrganizationFABState extends State<OrganizationFAB> {
 
     double size = MediaQuery.of(context).size.width;
     return FractionallySizedBox(
-      heightFactor: 0.75,
-      child: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(16.0),
+      heightFactor: 0.7,
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
+              SizedBox(height: size * 0.1),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -75,11 +81,6 @@ class _OrganizationFABState extends State<OrganizationFAB> {
                 style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               SizedBox(height: size * 0.05),
-              const Text(
-                'Organization Name',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: size * 0.02),
               ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
                 child: Container(
@@ -100,11 +101,6 @@ class _OrganizationFABState extends State<OrganizationFAB> {
                 ),
               ),
               SizedBox(height: size * 0.05),
-              const Text(
-                'Location',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: size * 0.02),
               ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
                 child: Container(
@@ -130,7 +126,7 @@ class _OrganizationFABState extends State<OrganizationFAB> {
                     }).toList(),
                     onChanged: (String? newValue) {
                       // Handle dropdown value changes here
-
+          
                       selectedValue = newValue;
                     },
                     // Set an initial value if needed
@@ -139,11 +135,6 @@ class _OrganizationFABState extends State<OrganizationFAB> {
                 ),
               ),
               SizedBox(height: size * 0.05),
-              const Text(
-                'Description',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: size * 0.02),
               ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
                 child: Container(
@@ -164,8 +155,12 @@ class _OrganizationFABState extends State<OrganizationFAB> {
                   ),
                 ),
               ),
-              SizedBox(height: size * 0.02),
-              SecondaryButton(buttonName: 'Submit', onPress: handleSubmit, color: const Color(0xFF1D4771),)
+              SizedBox(height: size * 0.04),
+              SecondaryButton(
+                buttonName: 'Submit',
+                onPress: handleSubmit,
+                color: const Color(0xFF1D4771),
+              )
             ],
           ),
         ),

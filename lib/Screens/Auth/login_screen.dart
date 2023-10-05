@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../../consts/text_styles.dart';
-import '../../dark theme/theme_model.dart';
 import 'forget_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {

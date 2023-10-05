@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:speed_dial_fab/speed_dial_fab.dart';
 
 import '../../../../widgets/button widgets/FABs/business_fab.dart';
 import 'Navigation Children/Business Bank/business_Center.dart';
+import 'Navigation Children/Support Bank/support.dart';
 import 'Navigation Children/organization bank/organizationCenter.dart';
-import '../../../../dark theme/theme_model.dart';
 import '../../../../widgets/button widgets/FABs/organization_fab.dart';
-import 'Navigation Children/Notifications.dart';
-import 'Navigation Children/Business Bank/business.dart';
+import 'Navigation Children/Notification Bank/Notifications.dart';
 import 'Navigation Children/home.dart';
-import 'Navigation Children/organization bank/organizations.dart';
-import 'Navigation Children/support.dart';
 
 class MotherPage extends StatefulWidget {
   const MotherPage({Key? key}) : super(key: key);
@@ -25,12 +21,9 @@ class _MotherPageState extends State<MotherPage> {
   List<Widget> screens = [
     const Home(),
     OrganizationHome(),
-    //const Organization(),
-     BusinessHome(),
-
+    BusinessHome(),
     const Notifications(),
     const Support(),
-    //const Account(),
   ];
 
   @override
@@ -42,15 +35,13 @@ class _MotherPageState extends State<MotherPage> {
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor:
-            isDarkTheme ? Colors.white : const Color(0xFF00376D),
+        selectedItemColor: isDarkTheme ? Colors.white : const Color(0xFF00376D),
         iconSize: 20,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         unselectedItemColor: isDarkTheme ? Colors.grey : Colors.black,
-        backgroundColor: isDarkTheme
-            ? const Color(0xFF3B3A38)
-            : const Color(0xFF00376D),
+        backgroundColor:
+            isDarkTheme ? const Color(0xFF3B3A38) : const Color(0xFF00376D),
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
@@ -59,7 +50,7 @@ class _MotherPageState extends State<MotherPage> {
         },
         items: const [
           BottomNavigationBarItem(
-            // backgroundColor: Color(0XFF3B3A38),
+            
             activeIcon: ImageIcon(AssetImage("assets/images/home-active.png")),
             icon: ImageIcon(AssetImage("assets/images/home.png")),
             label: 'Home',
@@ -87,11 +78,7 @@ class _MotherPageState extends State<MotherPage> {
             icon: ImageIcon(AssetImage("assets/images/support.png")),
             label: 'Support',
           ),
-          // BottomNavigationBarItem(
-          //   activeIcon: ImageIcon(AssetImage("assets/images/profile-active.png")),
-          //   icon: ImageIcon(AssetImage("assets/images/profile.png")),
-          //   label: 'Account',
-          // ),
+          
         ],
       ),
       floatingActionButton: SpeedDialFabWidget(
@@ -117,7 +104,7 @@ class _MotherPageState extends State<MotherPage> {
                   isScrollControlled: true,
                   shape: const RoundedRectangleBorder(
                     borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(15.0)),
+                        BorderRadius.vertical(top: Radius.circular(50.0)),
                   ),
                   context: context,
                   builder: (BuildContext context) {
@@ -130,7 +117,7 @@ class _MotherPageState extends State<MotherPage> {
                   isScrollControlled: true,
                   shape: const RoundedRectangleBorder(
                     borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(15.0)),
+                        BorderRadius.vertical(top: Radius.circular(50.0)),
                   ),
                   context: context,
                   builder: (BuildContext context) {
@@ -147,7 +134,4 @@ class _MotherPageState extends State<MotherPage> {
     );
     // });
   }
-
-  // BottomNavigationBar buildBottomNavigationBar() {
-  //   return   }
 }

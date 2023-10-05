@@ -126,9 +126,19 @@ class _PendingOrganizationState extends State<PendingOrganization> {
                           ),
                         ),
                         Expanded(child: Container()),
-                        const ImageIcon(
-                          AssetImage("assets/images/edit.png"),
-                          size: 24,
+                        InkWell(
+                          onTap: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                    'Masa! you cant update oranization Here :)'),
+                              ),
+                            );
+                          },
+                          child: const ImageIcon(
+                            AssetImage("assets/images/edit.png"),
+                            size: 24,
+                          ),
                         ),
                       ],
                     ),

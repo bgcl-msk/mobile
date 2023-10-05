@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobilemsk/Screens/Auth/provide_otp_screen.dart';
-import 'package:provider/provider.dart';
 
-import '../../dark theme/theme_model.dart';
-import '../../widgets/button widgets/primary_button.dart';
+import '../../widgets/button widgets/big buttons/primary_button.dart';
+
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});

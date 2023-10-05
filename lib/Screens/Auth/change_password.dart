@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../widgets/Text Field Widgets/textfields.dart';
-import '../../widgets/button widgets/primary_button.dart';
+import '../../widgets/button widgets/big buttons/primary_button.dart';
 import '../DashBord/BottonNavigation/Mother Page/main_page.dart';
 
 class ChangePassword extends StatefulWidget {

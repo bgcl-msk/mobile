@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../widgets/button widgets/secondary_button.dart';
+
+import '../../../../../../widgets/button widgets/big buttons/secondary_button.dart';
 import '../../../../../../widgets/model/OrganizationCard.dart';
 import '../../../../../../widgets/model/OrganizationDataProvider.dart';
 
@@ -56,7 +57,7 @@ void initState() {
 
   // Provide feedback to the user (e.g., show a snackbar or navigate back)
   ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
+    const SnackBar(
       content: Text('Organization updated successfully!'),
     ),
   );
